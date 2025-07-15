@@ -29,4 +29,8 @@ export default defineConfig({
       // 添加更多别名...
     },
   },
+  build: {
+    outDir: "./dist",
+    emptyOutDir: true,
+  },
 });
