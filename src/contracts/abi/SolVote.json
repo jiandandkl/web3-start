@@ -1,0 +1,395 @@
+{
+  "address": "6zMNJsDNbL4N8L9KfLtvgbwRpwEu233C22ujyRqFrS1W",
+  "metadata": {
+    "name": "prediction_market",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "nextmate prediction market program"
+  },
+  "instructions": [
+    {
+      "name": "config_service_fee",
+      "discriminator": [53, 134, 225, 186, 241, 107, 42, 177],
+      "accounts": [
+        {
+          "name": "market_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109, 97, 114, 107, 101, 116, 95, 115, 116, 97, 116, 101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_fee_receiver",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "config_signer",
+      "discriminator": [154, 169, 74, 45, 196, 23, 85, 213],
+      "accounts": [
+        {
+          "name": "market_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109, 97, 114, 107, 101, 116, 95, 115, 116, 97, 116, 101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_signer",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [175, 175, 109, 31, 13, 152, 155, 237],
+      "accounts": [
+        {
+          "name": "market_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109, 97, 114, 107, 101, 116, 95, 115, 116, 97, 116, 101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "place_vote",
+      "discriminator": [95, 34, 235, 31, 136, 43, 28, 223],
+      "accounts": [
+        {
+          "name": "market_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109, 97, 114, 107, 101, 116, 95, 115, 116, 97, 116, 101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "voter",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "instructions",
+          "docs": ["Instructions sysvar"]
+        }
+      ],
+      "args": [
+        {
+          "name": "vote_id",
+          "type": "string"
+        },
+        {
+          "name": "lamports",
+          "type": "u64"
+        },
+        {
+          "name": "expire_timestamp",
+          "type": "i64"
+        },
+        {
+          "name": "signature",
+          "type": {
+            "array": ["u8", 64]
+          }
+        }
+      ]
+    },
+    {
+      "name": "withdraw",
+      "discriminator": [183, 18, 70, 156, 148, 109, 161, 34],
+      "accounts": [
+        {
+          "name": "market_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109, 97, 114, 107, 101, 116, 95, 115, 116, 97, 116, 101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "claim_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [99, 108, 97, 105, 109, 95, 105, 110, 102, 111]
+              },
+              {
+                "kind": "arg",
+                "path": "claim_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "claimer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "instructions",
+          "docs": ["Instructions sysvar"]
+        }
+      ],
+      "args": [
+        {
+          "name": "claim_id",
+          "type": "string"
+        },
+        {
+          "name": "lamports",
+          "type": "u64"
+        },
+        {
+          "name": "expire_timestamp",
+          "type": "i64"
+        },
+        {
+          "name": "signature",
+          "type": {
+            "array": ["u8", 64]
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ClaimInfo",
+      "discriminator": [129, 190, 22, 157, 235, 64, 38, 111]
+    },
+    {
+      "name": "MarketState",
+      "discriminator": [0, 125, 123, 215, 95, 96, 164, 194]
+    }
+  ],
+  "events": [
+    {
+      "name": "VoteEvent",
+      "discriminator": [195, 71, 250, 105, 120, 119, 234, 134]
+    },
+    {
+      "name": "WithdrawEvent",
+      "discriminator": [22, 9, 133, 26, 160, 44, 71, 192]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidParameters",
+      "msg": "Invalid parameters"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidValue",
+      "msg": "Invalid value"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidSignature",
+      "msg": "Invalid signature"
+    },
+    {
+      "code": 6004,
+      "name": "OutOfVotePeriod",
+      "msg": "Out of vote period"
+    },
+    {
+      "code": 6005,
+      "name": "ClaimExpired",
+      "msg": "Claim is expired"
+    },
+    {
+      "code": 6006,
+      "name": "AlreadyClaimed",
+      "msg": "Claim already processed"
+    },
+    {
+      "code": 6007,
+      "name": "InsufficientBalance",
+      "msg": "Insufficient balance"
+    },
+    {
+      "code": 6008,
+      "name": "MissingEd25519Instruction",
+      "msg": "Missing Ed25519 instruction"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidEd25519Instruction",
+      "msg": "Invalid Ed25519 instruction"
+    },
+    {
+      "code": 6010,
+      "name": "InvalidPublicKey",
+      "msg": "Invalid public key"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidMessage",
+      "msg": "Invalid message"
+    }
+  ],
+  "types": [
+    {
+      "name": "ClaimInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "used",
+            "type": "bool"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MarketState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "signer",
+            "type": "pubkey"
+          },
+          {
+            "name": "service_fee_receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VoteEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vote_id",
+            "type": "string"
+          },
+          {
+            "name": "voter",
+            "type": "pubkey"
+          },
+          {
+            "name": "lamports",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WithdrawEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "claim_id",
+            "type": "string"
+          },
+          {
+            "name": "claimer",
+            "type": "pubkey"
+          },
+          {
+            "name": "lamports",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ]
+}
