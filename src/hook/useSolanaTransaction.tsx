@@ -111,7 +111,7 @@ const useSolanaTransaction = () => {
     try {
       const connection = new Connection(
         `https://solana-mainnet.g.alchemy.com/v2/${
-          import.meta.env.VITE__ALCHEMY_API_KEY
+          import.meta.env.VITE_ALCHEMY_API_KEY
         }`,
         "confirmed"
       );
@@ -161,7 +161,7 @@ const useSolanaTransaction = () => {
     try {
       const connection = new Connection(
         `https://solana-mainnet.g.alchemy.com/v2/${
-          import.meta.env.VITE__ALCHEMY_API_KEY
+          import.meta.env.VITE_ALCHEMY_API_KEY
         }`,
         "confirmed"
       );
@@ -219,7 +219,7 @@ const useSolanaTransaction = () => {
     try {
       const connection = new Connection(
         `https://solana-mainnet.g.alchemy.com/v2/${
-          import.meta.env.VITE__ALCHEMY_API_KEY
+          import.meta.env.VITE_ALCHEMY_API_KEY
         }`,
         "confirmed"
       );
@@ -295,7 +295,7 @@ const useSolanaTransaction = () => {
     try {
       const connection = new Connection(
         `https://solana-mainnet.g.alchemy.com/v2/${
-          import.meta.env.VITE__ALCHEMY_API_KEY
+          import.meta.env.VITE_ALCHEMY_API_KEY
         }`,
         "confirmed"
       );

@@ -14,7 +14,7 @@ import { createConfig, http, createStorage, cookieStorage } from "wagmi";
 import { metaMask, coinbaseWallet } from "wagmi/connectors";
 
 const appName = "start-web3";
-const projectId = import.meta.env.VITE__WAGMI_PROJECT_ID || "";
+const projectId = import.meta.env.VITE_WAGMI_PROJECT_ID || "";
 
 const { connectors } = getDefaultWallets({ appName, projectId });
 

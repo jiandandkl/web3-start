@@ -2,7 +2,7 @@ import Erc20Abi from "./abi/Erc20Token.json";
 import EvmVoteAbi from "./abi/EvmVote.json";
 
 // 正式合约：false、 测试合约：true
-export const isDev = import.meta.env.VITE__NODE_ENV === "development";
+export const isDev = import.meta.env.VITE_NODE_ENV === "development";
 
 export let contractObj: Record<string, string>;
 
