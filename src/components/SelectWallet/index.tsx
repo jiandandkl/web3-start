@@ -32,18 +32,12 @@ export default function SelectWallet({
       const isPhantom = navigator.userAgent.toLowerCase().includes("phantom");
       if (!isMetaMask && type === WalletType.metamask) {
         const domain = "https://dashboard.reown.com";
-        // import.meta.env.VITE__NODE_ENV === "development"
-        //   ? `nextmate-svc.xyz${fullPath}`
-        //   : `nextmate.ai${fullPath}`;
         window.open(`https://metamask.app.link/dapp/${domain}`);
         return;
       }
 
       if (!isPhantom && type === WalletType.phantom) {
-        const domain =
-          import.meta.env.VITE__NODE_ENV === "development"
-            ? `https://nextmate-svc.xyz`
-            : `https://nextmate.ai`;
+        const domain = "https://dashboard.reown.com";
         window.open(
           `https://phantom.app/ul/browse/${encodeURIComponent(
             domain
